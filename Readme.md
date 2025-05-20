@@ -19,7 +19,7 @@ This is a Node.js-based chatbot application that uses Google's Generative AI (Ge
 1. Clone this repository to your local machine.
 2. Navigate to the project directory:
    ```bash
-   cd chatbot
+   cd cli-chatbot
    ```
 3. Install the required dependencies:
    ```bash
