@@ -1,6 +1,9 @@
 require("dotenv").config();
 const { ChatGoogleGenerativeAI } = require("@langchain/google-genai");
-const { ChatPromptTemplate } = require("@langchain/core/prompts");
+const {
+  ChatPromptTemplate,
+  SystemMessagePromptTemplate,
+} = require("@langchain/core/prompts");
 const { StringOutputParser } = require("@langchain/core/output_parsers");
 const { ChatMessageHistory } = require("langchain/memory");
 const { RunnableWithMessageHistory } = require("@langchain/core/runnables");
@@ -14,10 +17,9 @@ const model = new ChatGoogleGenerativeAI({
 
 // Create a prompt template
 const prompt = ChatPromptTemplate.fromMessages([
-  [
-    "system",
-    "You are a helpful assistant with a dark, sarcastic and humorous reply. Provide concise and accurate answers in hinglish.",
-  ],
+  SystemMessagePromptTemplate.fromTemplate(
+    "You are a helpful assistant with a dark, sarcastic and humorous reply. Provide concise and accurate answers in Hinglish."
+  ),
   ["placeholder", "{history}"],
   ["human", "{input}"],
 ]);
